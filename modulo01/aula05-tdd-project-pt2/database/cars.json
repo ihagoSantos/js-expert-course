@@ -1,0 +1,23 @@
+[
+    {
+        "id": "f1296539-a5e1-4bf0-9a59-74a7e03e7514",
+        "name": "Corvette",
+        "releaseYear": 2024,
+        "availabel": true,
+        "gasAvailable": true
+    },
+    {
+        "id": "64cb59b9-7bad-45f3-ac21-f0aee2f47bfd",
+        "name": "Taurus",
+        "releaseYear": 2024,
+        "availabel": true,
+        "gasAvailable": true
+    },
+    {
+        "id": "918fdc04-5749-4a21-aeab-93fbebb1d9bf",
+        "name": "Cruze",
+        "releaseYear": 2025,
+        "availabel": true,
+        "gasAvailable": true
+    }
+]
