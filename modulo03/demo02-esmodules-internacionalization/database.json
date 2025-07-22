@@ -1,13 +1,1 @@
-[
-    {
-        "id": 1,
-        "vehicles": [
-            "Motocleta",
-            "Carro",
-            "Caminhão"
-        ],
-        "kmTraveled": 10000,
-        "from": "2009-01-01",
-        "to": "2020-11-26"
-    }
-]
+[{"id":1,"vehicles":["Motocleta","Carro","Caminhão"],"kmTraveled":10000,"from":"2009-01-01","to":"2020-11-26"},{"id":"2","vehicles":["Bike"],"kmTraveled":"20000","from":"2021-01-01","to":"2022-02-02"},{"id":"3","vehicles":["Carro"],"kmTraveled":"30000000","from":"2020-01-01","to":"2025-05-05"}]
