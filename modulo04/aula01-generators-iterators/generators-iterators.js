@@ -32,10 +32,11 @@ assert.deepStrictEqual([...main()], ['Hello', '-', 'World', 400])
 
 // -------- async iterators
 const { readFile, stat, readdir } = require('fs/promises')
-function* promisified() {
-    yield readFile(__filename)
-    yield Promise.resolve('Hey Dude')
-}
+// Exemplo 1
+// function* promisified() {
+//     yield readFile(__filename)
+//     yield Promise.resolve('Hey Dude')
+// }
 
 // // dessa forma, as promises retornadas não estão desolvidas
 // console.log('promisified', [...promisified()])
@@ -48,19 +49,82 @@ function* promisified() {
 //         }
 //     })()
 
-async function* systemInfo() {
-    const file = await readFile(__filename)
-    yield { file: file.toString() }
+// Exemplo 2
+// async function* systemInfo() {
+//     const file = await readFile(__filename)
+//     yield { file: file.toString() }
 
-    const { size } = await stat(__filename)
-    yield { size }
+//     const { size } = await stat(__filename)
+//     yield { size }
 
-    const dir = await readdir(__dirname)
-    yield { dir }
+//     const dir = await readdir(__dirname)
+//     yield { dir }
+// }
+
+// ; (async () => {
+//     for await (item of systemInfo()) {
+//         console.log('for await', item)
+//     }
+// })()
+
+// Passing arguments into Generators
+// function* logGenerator() {
+//     console.log(0)
+//     console.log(1, yield)
+//     console.log(2, yield)
+//     console.log(3, yield)
+// }
+
+// const gen = logGenerator()
+// gen.next()
+// gen.next("Hey")
+// gen.next("-")
+// gen.next("Dude")
+// gen.next("!")
+
+// Return statement in a Generator
+// function* yieldAndReturn() {
+//     yield "Hey"
+//     return "Dude" // break the yield 
+//     yield "!"
+// }
+
+// const gen = yieldAndReturn()
+// console.log(gen.next())
+// console.log(gen.next())
+// console.log(gen.next())
+
+// Generator as an object property
+const obj = {
+    *generator() {
+        yield "a"
+        yield "b"
+    }
+}
+const gen = obj.generator()
+assert.deepStrictEqual([...gen], ['a', 'b'])
+
+//Generator as an object method
+class Foo {
+    *generator() {
+        yield 1
+        yield 2
+        yield 3
+    }
 }
 
-; (async () => {
-    for await (item of systemInfo()) {
-        console.log('for await', item)
+const f = new Foo()
+const fooGen = f.generator()
+assert.deepStrictEqual([...fooGen], [1, 2, 3])
+assert.deepStrictEqual([...f.generator()], [1, 2, 3])
+
+// Generator as a computed property
+class Bar {
+    *[Symbol.iterator]() {
+        yield 1
+        yield 2
+        yield 3
     }
-})()
+}
+
+assert.deepStrictEqual(Array.from(new Bar()), [1, 2, 3])
