@@ -1,0 +1,35 @@
+regex101.com
+/^\d{3}.\d{3}.\d{3}-\d{2}/gm
+
+----------------------------------------------------------------------
+
+123.123.123-12
+321.321.321-32
+111.222.333.44
+
+replace [.-] -> vazio
+
+-----------------------------------------------------------------------
+
+Santos, Ihago
+Gomes, Laila
+Johnson, Jose
+
+replace: /^(\w+),\s(\w+)$ por 
+{"firstName": "$2", "lastName": "$1"}
+
+$2 -> grupo 2 -> segundo (\w+)
+$1 -> grupo 1 -> primeiro (\w+)
+
+
+-------------------------------------------------------------------------
+
+O [Erick Wendel](https://erickwendel.com) faz palestras e você devia segui-lo lá no [Twitter](http://twitter.com/erickwendel_) ou até no [Instagram](https://instagram.com/erickwendel_)
+
+Ah e pode pesquisar no [Google](https://google.com) ou
+[Yahoo](https://yahoo.com)
+
+vai que vai!
+
+Replace: \[(.*?)\]\(([http|https].*?)\) por 
+<a href="$2">$1</a>
