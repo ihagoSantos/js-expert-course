@@ -1,6 +1,6 @@
 const { describe, it } = require('mocha')
 const { expect } = require('chai')
-const TextProcessorFluentAPI = require('./../src/textProcessorFluentAPI')
+const TextProcessorFluentAPI = require('../src/textProcessorFluentAPI')
 const mock = require('./mock/valid')
 
 describe('TextProcessorFluentAPI', () => {
@@ -25,7 +25,6 @@ describe('TextProcessorFluentAPI', () => {
                 "Júlia Menezes, brasileira, solteira, CPF 297.947.800-81, residente e ",
                 "domiciliada a Av. dos Estados, 99, bairro Jardins, São Paulo. ",
             ].join("\n"),
-
         ]
         expect(result).to.be.deep.equal(expected)
     })
