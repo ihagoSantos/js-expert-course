@@ -10,4 +10,4 @@ echo $CONTAINER_ID | xargs -I {id} docker logs {id}
 echo stop
 echo $CONTAINER_ID | xargs -I {id} docker stop {id}
 echo rm
-echo $CONTAINER_ID | xargs -I {id} docker rm {id}
+echo $CONTAINER_ID | xargs -I {id} docker rm -f {id}
