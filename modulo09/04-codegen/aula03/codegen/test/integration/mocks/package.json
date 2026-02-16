@@ -1,0 +1,10 @@
+{
+  "name": "@ihagoSantos/codegen-mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "ihagoSantos",
+  "license": "ISC",
+  "type": "module"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@ihagoSantos/codegen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "codegen": "./src/index.js"
+  },
+  "scripts": {
+    "start": "NODE_ENV=dev node src/index.js skeleton -c product -c person -c colors",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --config jest.config.mjs --watch",
+    "test:cov": "NODE_OPTIONS=--experimental-vm-modules npx jest --config jest.config.mjs --coverage "
+  },
+  "keywords": [],
+  "author": "ihagoSantos",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  },
+  "dependencies": {
+    "yargs": "^18.0.0"
+  }
+}
