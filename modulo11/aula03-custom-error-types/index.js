@@ -1,20 +1,21 @@
 import { createServer } from 'http'
 import BusinessError from './errors/businessError.js'
+import { statusCodes } from './utils/httpStatusCodes.js'
 
 function validateHero(hero) {
-    if(hero.age < 20){
-        throw new BusinessError("age must be higher than 20!")
-    }
-    
-    if(!hero.name?.length < 4){
-        throw new BusinessError("name length must be higher than 4!")
-    }
-
     // simulando um outro erro, por exemplo de bd
     if(Reflect.has(hero, "connectionError")){
         // só um erro genérico para trazer outro cenário de erro inesperado
         throw new Error("error connecting to DB!")
     }
+
+    if(hero.age < 20){
+        throw new BusinessError("age must be higher than 20!")
+    }
+    
+    if(hero.name?.length < 4){
+        throw new BusinessError("name length must be higher than 4!")
+    }   
 }
 async function handler(request, response){
     for await(const data of request){
@@ -22,16 +23,16 @@ async function handler(request, response){
             const hero = JSON.parse(data)
             validateHero(hero)
             console.log({ hero })
-            response.writeHead(200)
+            response.writeHead(statusCodes.OK)
             response.end()
         } catch (error) {
-            console.error(error)
+            console.error(error.message)
             if(error instanceof BusinessError){
-                response.writeHead(400)
+                response.writeHead(statusCodes.BAD_REQUEST)
                 response.end(error.message)
                 continue
             }
-            response.writeHead(500)
+            response.writeHead(statusCodes.INTERNAL_SERVER_ERROR)
             response.end()
         }
     }
@@ -41,5 +42,5 @@ createServer(handler)
     .listen(3000, () => console.log('running at 3000'))
 
 /**
- * curl -i localhost:3000 -X POST --data '{"name": "vingador", "age": "80"}'
+ * curl -i localhost:3000 -X POST --data '{"name": "vingador", "age": 80}'
  */
