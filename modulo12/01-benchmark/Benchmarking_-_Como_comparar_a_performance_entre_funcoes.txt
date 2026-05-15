@@ -1,0 +1,30 @@
+<p><a href="https://www.json-generator.com/">https://www.json-generator.com/</a>
+</p>
+<p>{
+</p>
+<p>    at: '{{date(new Date()).toISOString()}}',
+</p>
+<p>    products: [
+</p>
+<p>        '{{repeat(100, 100)}}',
+</p>
+<p>        {
+</p>
+<p>            description: '{{lorem(4, "words")}}',
+</p>
+<p>            name: '{{lorem(1, "words")}}',
+</p>
+<p>            price: '{{floating(100, 2000, 2, "000.00")}}',
+</p>
+<p>            tmpProperty: 'undefined',
+</p>
+<p>            activePromoId: '{{random(integer(0, 100), null)}}'
+</p>
+<p>        }
+</p>
+<p>    ]
+</p>
+<p>}
+</p>
+<p><a href="https://www.npmjs.com/package/benchmark">https://www.npmjs.com/package/benchmark</a><span class="redactor-invisible-space"></span><br>
+</p>
